@@ -4,11 +4,16 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 const rawPort = process.env.PORT;
-const port = rawPort && !Number.isNaN(Number(rawPort)) ? Number(rawPort) : 3000;
+const port =
+  rawPort && !Number.isNaN(Number(rawPort))
+    ? Number(rawPort)
+    : 3000;
 
 const basePath = process.env.BASE_PATH ?? "/";
 
 export default defineConfig({
+  appType: "spa",
+
   base: basePath,
 
   plugins: [
@@ -19,15 +24,27 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
+      "@assets": path.resolve(
+        import.meta.dirname,
+        "..",
+        "..",
+        "attached_assets"
+      ),
     },
-    dedupe: ["react", "react-dom"],
+
+    dedupe: [
+      "react",
+      "react-dom",
+    ],
   },
 
   root: path.resolve(import.meta.dirname),
 
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(
+      import.meta.dirname,
+      "dist/public"
+    ),
     emptyOutDir: true,
   },
 
@@ -35,7 +52,7 @@ export default defineConfig({
     port,
     strictPort: true,
     host: "0.0.0.0",
-    allowedHosts: true,
+
     proxy: {
       "/api": {
         target: "http://localhost:8080",
@@ -43,6 +60,7 @@ export default defineConfig({
         secure: false,
       },
     },
+
     fs: {
       strict: true,
     },
@@ -51,6 +69,5 @@ export default defineConfig({
   preview: {
     port,
     host: "0.0.0.0",
-    allowedHosts: true,
   },
 });
