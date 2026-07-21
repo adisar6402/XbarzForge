@@ -57,14 +57,20 @@ app.use("/api", router);
 if (process.env.NODE_ENV === "production") {
   const staticDir =
     process.env.STATIC_DIR ||
-    path.join(process.cwd(), "artifacts/xbarzforge/dist/public");
+    path.resolve(
+      process.cwd(),
+      "artifacts/xbarzforge/dist/public",
+    );
+
+  console.log("STATIC DIR:", staticDir);
 
   app.use(express.static(staticDir));
 
-  // SPA fallback — serve index.html for every non-/api route so client-side
-  // routing works correctly after a hard refresh or direct URL access.
+  // SPA fallback for frontend routes
   app.get(/^(?!\/api).*/, (_req, res) => {
-    res.sendFile(path.join(staticDir, "index.html"));
+    res.sendFile(
+      path.resolve(staticDir, "index.html"),
+    );
   });
 }
 
