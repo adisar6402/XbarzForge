@@ -3,7 +3,7 @@
 > **Forge Better Code. Build Smarter.**
 
 <p align="center">
-  <img src="artifacts/xbarzforge/public/logo.svg" alt="XbarzForge Logo" width="140"/>
+  <img src="./artifacts/xbarzforge/public/og-image.png" alt="XbarzForge Logo" width="600"/>
 </p>
 
 <p align="center">
