@@ -6,6 +6,12 @@
   <img src="artifacts/xbarzforge/public/logo.svg" alt="XbarzForge Logo" width="140"/>
 </p>
 
+<p align="center">
+  🚀 Live Demo:
+  <br/>
+  https://xbarzforge.onrender.com
+</p>
+
 **XbarzForge** is an AI-powered developer platform that helps developers understand, analyze, document, and explore software projects using natural language.
 
 Built for **OpenAI Build Week 2026**, XbarzForge acts as your codebase's second brain—making it easier to understand unfamiliar repositories, generate documentation, detect issues, and improve developer productivity.
@@ -221,16 +227,21 @@ node artifacts/api-server/dist/index.mjs
 
 # 🌍 Deployment
 
-This repository includes a ready-to-use **render.yaml**.
+## Live Application
+
+🚀 Production URL:
+
+https://xbarzforge.onrender.com
+
+This repository includes a ready-to-use **render.yaml** configuration.
 
 Deploy by:
 
 1. Push repository to GitHub
 2. Create a new Render Web Service
-3. Connect GitHub
-4. Render detects `render.yaml`
-5. Add environment variables
-6. Deploy
+3. Connect GitHub repository
+4. Add environment variables
+5. Deploy
 
 ---
 
@@ -331,6 +342,9 @@ Features include:
 
 GitHub:
 https://github.com/adisar6402
+
+Live Demo:
+https://xbarzforge.onrender.com
 
 ---
 
