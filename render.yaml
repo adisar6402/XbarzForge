@@ -1,0 +1,67 @@
+# render.yaml — Render.com deployment configuration for XbarzForge
+# https://render.com/docs/render-yaml-spec
+#
+# This deploys XbarzForge as a single web service:
+#   - Express API handles all /api/* routes
+#   - Express serves the built React frontend for everything else
+#   - SPA routing is handled server-side (no 404 on refresh)
+#
+# Deploy steps on Render:
+#   1. Fork / push this repo to GitHub
+#   2. Create a new "Web Service" in Render and connect your repo
+#   3. Render will detect render.yaml and pre-fill the settings
+#   4. Add all required environment variables in the Render dashboard
+#   5. Click "Deploy"
+
+services:
+  - type: web
+    name: xbarzforge
+    runtime: node
+    region: oregon
+    plan: free
+
+    # Install pnpm, install all workspace deps, codegen, then build both apps
+    buildCommand: |
+      npm install -g pnpm@9 &&
+      pnpm install --frozen-lockfile &&
+      pnpm --filter @workspace/api-spec run codegen &&
+      BASE_PATH=/ pnpm --filter @workspace/xbarzforge run build &&
+      pnpm --filter @workspace/api-server run build
+
+    startCommand: node artifacts/api-server/dist/index.mjs
+
+    healthCheckPath: /api/healthz
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # Directory where the built frontend lives (relative to project root)
+      - key: STATIC_DIR
+        value: artifacts/xbarzforge/dist/public
+
+      # ── Required: PostgreSQL ──────────────────────────────────────────────
+      # Provision a PostgreSQL database on Render (or use Neon / Supabase)
+      # and paste the connection string here.
+      - key: DATABASE_URL
+        sync: false
+
+      # ── Required: Clerk Authentication ───────────────────────────────────
+      # Create a free Clerk application at https://clerk.com
+      # Copy the keys from Clerk Dashboard → API Keys
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: CLERK_PUBLISHABLE_KEY
+        sync: false
+      - key: VITE_CLERK_PUBLISHABLE_KEY
+        sync: false
+
+      # ── Optional: OpenAI ─────────────────────────────────────────────────
+      # Without this key the app runs fine — only AI features are disabled.
+      - key: OPENAI_API_KEY
+        sync: false
+
+      # ── Required: Session ────────────────────────────────────────────────
+      # Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+      - key: SESSION_SECRET
+        sync: false
