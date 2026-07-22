@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
 // PORT is only required for the dev server, not for building.
 const rawPort = process.env.PORT;
@@ -18,7 +17,6 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    runtimeErrorOverlay(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'logo.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
