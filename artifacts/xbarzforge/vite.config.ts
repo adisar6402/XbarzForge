@@ -5,6 +5,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import { defineConfig } from "vite";
 
 const rawPort = process.env.PORT;
+
 const port =
   rawPort && !Number.isNaN(Number(rawPort))
     ? Number(rawPort)
@@ -30,13 +31,17 @@ export default defineConfig({
       ],
 
       manifest: {
+        id: "/",
+
         name: "XbarzForge",
         short_name: "Forge",
+
         description:
           "AI-powered developer platform for intelligent code analysis, documentation generation, repository insights, and developer productivity.",
 
         start_url: "/",
         scope: "/",
+
         display: "standalone",
 
         background_color: "#0a0a0c",
@@ -50,13 +55,27 @@ export default defineConfig({
             src: "/web-app-manifest-192x192.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "any",
           },
           {
             src: "/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "maskable",
+          },
+        ],
+
+        screenshots: [
+          {
+            src: "/screenshots/desktop-wide.png",
+            sizes: "1280x720",
+            type: "image/png",
+            form_factor: "wide",
+          },
+          {
+            src: "/screenshots/mobile.png",
+            sizes: "390x844",
+            type: "image/png",
           },
         ],
       },
