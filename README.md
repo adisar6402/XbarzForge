@@ -3,32 +3,65 @@
 > **Forge Better Code. Build Smarter.**
 
 <p align="center">
-  <img src="./public/og-image.png" alt="XbarzForge Logo" width="600"/>
+
+![Build](https://img.shields.io/badge/OpenAI-Build%20Week%202026-412991?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-20-339933?style=for-the-badge&logo=node.js)
+![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
+
 </p>
 
 <p align="center">
-  🚀 Live Demo:
-  <br/>
-  <a href="https://xbarzforge.onrender.com">
-    https://xbarzforge.onrender.com
-  </a>
+<img src="./public/og-image.png" alt="XbarzForge Banner" width="850"/>
+</p>
+
+<p align="center">
+
+## 🌐 Live Demo
+
+**https://xbarzforge.onrender.com**
+
 </p>
 
 ---
 
-## 🧠 About XbarzForge
+# 📖 Table of Contents
 
-**XbarzForge** is an AI-powered developer platform that helps developers understand, analyze, document, and explore software projects using natural language.
+- About
+- OpenAI Build Week
+- Features
+- Tech Stack
+- Screenshots
+- Project Structure
+- Local Development
+- Production Build
+- Deployment
+- Environment Variables
+- Progressive Web App
+- Roadmap
+- Author
+- Acknowledgements
+- License
 
-Built for **OpenAI Build Week 2026**, XbarzForge acts as a developer's second brain — helping engineers understand unfamiliar repositories, generate documentation, identify issues, and improve productivity.
+---
+
+# 🧠 About
+
+**XbarzForge** is an AI-powered developer platform that helps software engineers understand, analyze, document, and explore codebases using natural language.
+
+Built for **OpenAI Build Week 2026**, XbarzForge acts as a developer's second brain by making unfamiliar repositories easier to understand through AI-assisted analysis, documentation, intelligent search, and developer tooling.
+
+The platform focuses on improving developer productivity while remaining production-ready, responsive, and installable as a Progressive Web App (PWA).
 
 ---
 
 # 🚀 OpenAI Build Week 2026
 
-XbarzForge was created as a submission for **OpenAI Build Week 2026**.
+This project was created as an official submission for **OpenAI Build Week 2026**.
 
-The mission was to build a practical AI developer tool that demonstrates how AI can improve real software engineering workflows while remaining production-ready, deployable, and accessible.
+The goal was to build a practical AI-powered developer tool capable of solving real engineering problems while demonstrating thoughtful product design, modern web architecture, and production readiness.
 
 ---
 
@@ -36,7 +69,7 @@ The mission was to build a practical AI developer tool that demonstrates how AI 
 
 ## 🤖 AI Code Analysis
 
-Analyze software projects and receive:
+Analyze repositories and receive:
 
 - Repository architecture overview
 - Programming language detection
@@ -51,38 +84,39 @@ Analyze software projects and receive:
 
 ## 💬 AI Codebase Chat
 
-Ask questions about your project using natural language.
+Interact with your project using natural language.
 
-Examples:
+Example prompts:
 
-- "Explain this project"
-- "Where is authentication implemented?"
-- "How can I improve performance?"
-- "Find possible bugs"
-- "Generate onboarding documentation"
+- Explain this repository
+- How is authentication implemented?
+- Where is database logic located?
+- Suggest performance improvements
+- Find potential bugs
+- Generate onboarding documentation
 
 ---
 
-## 📚 Documentation Generator
+## 📚 AI Documentation Generator
 
 Generate:
 
 - README files
 - API documentation
-- Architecture documents
 - Setup guides
+- Architecture documentation
 - Developer onboarding guides
 
 ---
 
 ## 📂 Project Import
 
-Analyze projects through:
+Supports:
 
 - GitHub repositories
 - ZIP uploads
 - Source code uploads
-- Code snippets
+- Individual code snippets
 
 ---
 
@@ -93,82 +127,99 @@ Search across:
 - Projects
 - Documentation
 - Conversations
-- AI generated results
+- AI generated content
 
 ---
 
 ## 🔐 Authentication
 
-Powered by Clerk:
+Powered by Clerk.
+
+Features include:
 
 - Email authentication
-- Google login
-- GitHub login
+- Google Sign-In
+- GitHub Sign-In
 - Password reset
-- Secure sessions
 - Protected routes
+- Secure sessions
 
 ---
 
 ## ⚡ Graceful AI Degradation
 
-XbarzForge continues working even without an OpenAI API key.
+XbarzForge continues functioning even when an OpenAI API key is unavailable.
 
 Available:
 
-✅ Authentication  
-✅ Project management  
-✅ Search  
-✅ Upload workflows  
+- Authentication
+- Project management
+- Search
+- Upload workflows
+- User dashboard
 
-Disabled:
+Unavailable without AI credentials:
 
-❌ AI analysis  
-❌ AI chat  
-❌ Documentation generation  
-
-when AI credentials are unavailable.
+- AI repository analysis
+- AI documentation generation
+- AI code explanations
+- AI conversations
 
 ---
 
 # 🛠 Tech Stack
 
 | Layer | Technology |
-|---|---|
+|--------|------------|
 | Frontend | React + Vite |
 | Language | TypeScript |
 | Styling | Tailwind CSS |
-| Components | shadcn/ui |
+| UI Components | shadcn/ui |
 | Backend | Node.js + Express |
 | Database | PostgreSQL |
 | ORM | Drizzle ORM |
 | Authentication | Clerk |
-| AI Integration | OpenAI API |
+| AI | OpenAI API |
 | Deployment | Render |
 | PWA | vite-plugin-pwa |
 
 ---
 
+# 📸 Screenshots
+
+## Desktop
+
+![Desktop Screenshot](./screenshots/desktop-wide.png)
+
+---
+
+## Mobile
+
+![Mobile Screenshot](./screenshots/mobile.png)
+
+---
+
 # 📁 Project Structure
 
-```
+```text
 XbarzForge/
 
 ├── src/
 │   ├── components/
 │   ├── pages/
 │   ├── hooks/
+│   ├── lib/
 │   └── main.tsx
 │
 ├── public/
+│   ├── manifest.webmanifest
 │   ├── favicon
-│   ├── manifest
+│   ├── icons
 │   └── assets
 │
 ├── api-client-react/
-│
+├── artifacts/
 ├── package.json
-├── package-lock.json
 ├── vite.config.ts
 ├── render.yaml
 └── README.md
@@ -191,20 +242,14 @@ cd XbarzForge
 ## Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
 
 ## Configure Environment Variables
 
-Create:
-
-```bash
-.env
-```
-
-Add required variables:
+Create a `.env` file:
 
 ```env
 VITE_CLERK_PUBLISHABLE_KEY=
@@ -219,10 +264,10 @@ OPENAI_API_KEY=
 ## Start Development Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
-Application runs locally at:
+Application runs at:
 
 ```
 http://localhost:5173
@@ -232,34 +277,34 @@ http://localhost:5173
 
 # 🏗 Production Build
 
-Build application:
+Build:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
-Preview production build:
+Preview:
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 ---
 
 # 🌍 Deployment
 
-XbarzForge is deployed using Render.
+XbarzForge is deployed on **Render**.
 
-Live production:
+### Live Application
 
-🚀 https://xbarzforge.onrender.com
+https://xbarzforge.onrender.com
 
-Deployment process:
+Deployment steps:
 
 1. Push repository to GitHub
 2. Connect repository to Render
-3. Add environment variables
-4. Deploy service
+3. Configure environment variables
+4. Deploy
 
 ---
 
@@ -283,41 +328,43 @@ OPENAI_API_KEY
 The OpenAI API key enables:
 
 - AI repository analysis
-- AI chat
-- Documentation generation
-- Code explanations
+- AI codebase chat
+- AI documentation generation
+- AI explanations
 
-Without the key, the platform remains functional with AI features disabled.
+Without it, the application remains fully functional while AI-specific features are gracefully disabled.
 
 ---
 
 # 📱 Progressive Web App
 
-XbarzForge includes PWA support.
+XbarzForge supports Progressive Web App capabilities.
 
-Features:
+Features include:
 
 - Installable application
 - Mobile support
 - Desktop support
-- Web manifest
 - Offline-ready landing experience
-- Custom branding
+- Web App Manifest
+- Service Worker
+- Custom icons
+- Native-like experience
 
 ---
 
 # 🎯 Roadmap
 
-Future improvements:
+Planned improvements:
 
 - Repository indexing
 - Semantic code search
+- AI pull request reviews
 - AI commit summaries
-- Pull request reviews
 - Team collaboration
 - GitHub App integration
-- AI code generation
 - Repository intelligence dashboard
+- Multi-project workspace support
 
 ---
 
@@ -337,11 +384,20 @@ https://xbarzforge.onrender.com
 
 ---
 
-# 🏆 OpenAI Build Week 2026
+# 🙏 Acknowledgements
 
 Built for **OpenAI Build Week 2026**.
 
-XbarzForge explores how AI can transform software engineering by making complex codebases easier to understand, document, and improve.
+Special thanks to:
+
+- OpenAI
+- Clerk
+- React
+- Vite
+- Tailwind CSS
+- Drizzle ORM
+- PostgreSQL
+- The Open Source Community
 
 ---
 
@@ -354,5 +410,9 @@ Copyright © 2026 Abdulrahman Adisa Amuda
 ---
 
 <p align="center">
-Built with ❤️ using TypeScript, React, Clerk, PostgreSQL, and OpenAI.
+
+Built with ❤️ using **TypeScript**, **React**, **Node.js**, **Clerk**, **PostgreSQL**, **Drizzle ORM**, and **OpenAI**.
+
+### Forge Better Code. Build Smarter.
+
 </p>
