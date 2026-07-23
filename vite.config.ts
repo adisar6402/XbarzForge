@@ -1,107 +1,198 @@
-import path from 'path';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
-import { VitePWA } from 'vite-plugin-pwa';
+import path from "path";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 
-
-// PORT is only required for the dev server, not for building.
+// PORT is only required for dev server
 const rawPort = process.env.PORT;
-const port = rawPort && !Number.isNaN(Number(rawPort)) ? Number(rawPort) : 3000;
 
-// BASE_PATH defaults to '/' for local/production builds (non-Replit)
-const basePath = process.env.BASE_PATH ?? '/';
+const port =
+  rawPort && !Number.isNaN(Number(rawPort))
+    ? Number(rawPort)
+    : 3000;
+
+// BASE_PATH defaults to "/"
+const basePath = process.env.BASE_PATH ?? "/";
 
 export default defineConfig({
   base: basePath,
+
   plugins: [
     react(),
     tailwindcss(),
+
     VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'logo.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
+      registerType: "autoUpdate",
+
+      includeAssets: [
+        "favicon.svg",
+        "apple-touch-icon.png",
+        "web-app-manifest-192x192.png",
+        "web-app-manifest-512x512.png",
+      ],
+
       manifest: {
-        name: 'XbarzForge',
-        short_name: 'Forge',
-        description: 'AI-powered developer platform for intelligent code analysis, documentation generation, repository insights, and developer productivity.',
-        theme_color: '#0BD9EB',
-        background_color: '#0a0a0c',
-        display: 'standalone',
-        orientation: 'portrait-primary',
-        scope: '/',
-        start_url: '/',
+        id: "/",
+
+        name: "XbarzForge",
+        short_name: "Forge",
+
+        description:
+          "AI-powered developer platform for intelligent code analysis, documentation generation, repository insights, and developer productivity.",
+
+        theme_color: "#0BD9EB",
+        background_color: "#0a0a0c",
+
+        display: "standalone",
+        orientation: "portrait-primary",
+
+        scope: "/",
+        start_url: "/",
+
         icons: [
-          { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
-          { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+          {
+            src: "/web-app-manifest-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/web-app-manifest-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
         ],
       },
+
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        navigateFallback: '/offline.html',
-        navigateFallbackDenylist: [/^\/api\//],
+        globPatterns: [
+          "**/*.{js,css,html,ico,png,svg,woff2}",
+        ],
+
+        navigateFallback: "/offline.html",
+
+        navigateFallbackDenylist: [
+          /^\/api\//,
+        ],
+
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
+            urlPattern:
+              /^https:\/\/fonts\.googleapis\.com\/.*/i,
+
+            handler: "CacheFirst",
+
             options: {
-              cacheName: 'google-fonts-cache',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheName: "google-fonts-cache",
+
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds:
+                  60 * 60 * 24 * 365,
+              },
             },
           },
+
           {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
+            urlPattern:
+              /^https:\/\/fonts\.gstatic\.com\/.*/i,
+
+            handler: "CacheFirst",
+
             options: {
-              cacheName: 'gstatic-fonts-cache',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheName:
+                "gstatic-fonts-cache",
+
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds:
+                  60 * 60 * 24 * 365,
+              },
             },
           },
         ],
       },
-      devOptions: { enabled: false },
+
+      devOptions: {
+        enabled: false,
+      },
     }),
-    ...(process.env.NODE_ENV !== 'production' &&
+
+    ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
-          await import('@replit/vite-plugin-cartographer').then((m) =>
+          await import(
+            "@replit/vite-plugin-cartographer"
+          ).then((m) =>
             m.cartographer({
-              root: path.resolve(import.meta.dirname, '..'),
-            }),
+              root: path.resolve(
+                import.meta.dirname,
+                ".."
+              ),
+            })
           ),
-          await import('@replit/vite-plugin-dev-banner').then((m) =>
-            m.devBanner(),
+
+          await import(
+            "@replit/vite-plugin-dev-banner"
+          ).then((m) =>
+            m.devBanner()
           ),
         ]
       : []),
   ],
+
   resolve: {
     alias: {
-      '@': path.resolve(import.meta.dirname, 'src'),
-      '@assets': path.resolve(
+      "@": path.resolve(
         import.meta.dirname,
-        '..',
-        '..',
-        'attached_assets',
+        "src"
+      ),
+
+      "@assets": path.resolve(
+        import.meta.dirname,
+        "..",
+        "..",
+        "attached_assets"
       ),
     },
-    dedupe: ['react', 'react-dom'],
+
+    dedupe: [
+      "react",
+      "react-dom",
+    ],
   },
-  root: path.resolve(import.meta.dirname),
+
+  root: path.resolve(
+    import.meta.dirname
+  ),
+
   build: {
-    outDir: path.resolve(import.meta.dirname, 'dist/public'),
+    outDir: path.resolve(
+      import.meta.dirname,
+      "dist/public"
+    ),
+
     emptyOutDir: true,
   },
+
   server: {
     port,
+
     strictPort: true,
-    host: '0.0.0.0',
+
+    host: "0.0.0.0",
+
     allowedHosts: true,
 
-    // Forward frontend API requests to backend server
     proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
+      "/api": {
+        target:
+          "http://localhost:8080",
+
         changeOrigin: true,
+
         secure: false,
       },
     },
@@ -110,9 +201,12 @@ export default defineConfig({
       strict: true,
     },
   },
+
   preview: {
     port,
-    host: '0.0.0.0',
+
+    host: "0.0.0.0",
+
     allowedHosts: true,
   },
 });

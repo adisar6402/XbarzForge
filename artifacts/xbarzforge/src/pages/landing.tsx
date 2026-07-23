@@ -8,7 +8,7 @@ import {
   Play,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@clerk/react";
+import { useUser, SignInButton } from "@clerk/react";
 
 export default function Landing() {
   const { isSignedIn } = useUser();
@@ -47,13 +47,14 @@ export default function Landing() {
               </>
             ) : (
               <>
-                <Button
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white font-mono"
-                  asChild
-                >
-                  <Link href="/sign-in">/login</Link>
-                </Button>
+                <SignInButton mode="modal">
+  <Button
+    variant="ghost"
+    className="text-gray-300 hover:text-white font-mono"
+  >
+    /login
+  </Button>
+</SignInButton>
 
                 <Button
                   className="bg-primary text-black hover:bg-primary/90 font-mono shadow-[0_0_20px_-5px_rgba(11,217,235,0.5)]"
@@ -89,16 +90,27 @@ export default function Landing() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom-6 delay-500 fill-mode-both">
-          <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-            <Button
-              size="lg"
-              className="h-14 px-8 text-lg bg-primary text-black hover:bg-primary/90 font-mono shadow-[0_0_30px_-5px_rgba(11,217,235,0.6)] group border-0"
-            >
-              {isSignedIn ? "Open Workspace" : "Start Analysis"}
-
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
+          {isSignedIn ? (
+  <Link href="/dashboard">
+    <Button
+      size="lg"
+      className="h-14 px-8 text-lg bg-primary text-black hover:bg-primary/90 font-mono shadow-[0_0_30px_-5px_rgba(11,217,235,0.6)] group border-0"
+    >
+      Open Workspace
+      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+    </Button>
+  </Link>
+) : (
+  <SignInButton mode="modal">
+    <Button
+      size="lg"
+      className="h-14 px-8 text-lg bg-primary text-black hover:bg-primary/90 font-mono shadow-[0_0_30px_-5px_rgba(11,217,235,0.6)] group border-0"
+    >
+      Start Analysis
+      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+    </Button>
+  </SignInButton>
+)}
 
           <Link href="/demo">
             <Button
