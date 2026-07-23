@@ -189,15 +189,17 @@ Unavailable without AI credentials:
 
 ## Desktop
 
-![Desktop Screenshot](./screenshots/desktop-wide.png)
+<p align="center">
+<img src="./docs/screenshots/desktop-wide.png" alt="XbarzForge Desktop Screenshot" width="900"/>
+</p>
 
 ---
 
 ## Mobile
 
-![Mobile Screenshot](./screenshots/mobile.png)
-
----
+<p align="center">
+<img src="./docs/screenshots/mobile.png" alt="XbarzForge Mobile Screenshot" width="400"/>
+</p>
 
 # 📁 Project Structure
 
