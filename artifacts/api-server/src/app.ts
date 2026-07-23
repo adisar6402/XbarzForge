@@ -54,7 +54,7 @@ app.use(
 app.use("/api", router);
 
 // In production, serve the built frontend and handle SPA routing.
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" || process.env.RENDER) {
   const staticDir =
     process.env.STATIC_DIR ||
     path.resolve(
