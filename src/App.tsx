@@ -109,13 +109,14 @@ const clerkAppearance = {
 
 function SignInPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 gap-6">
+    <div className="relative flex min-h-[100dvh] items-center justify-center bg-background px-4">
 
       <Link
         href="/"
-        className="text-primary font-mono hover:underline"
+        className="absolute left-6 top-6 flex items-center gap-2 text-primary font-mono hover:underline"
       >
-        ← Back to XbarzForge
+        <Terminal className="h-5 w-5" />
+        <span>Back to XbarzForge</span>
       </Link>
 
       <SignIn
@@ -123,20 +124,20 @@ function SignInPage() {
         path={`${basePath}/sign-in`}
         signUpUrl={`${basePath}/sign-up`}
       />
-
     </div>
   );
 }
 
 function SignUpPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 gap-6">
+    <div className="relative flex min-h-[100dvh] items-center justify-center bg-background px-4">
 
       <Link
         href="/"
-        className="text-primary font-mono hover:underline"
+        className="absolute left-6 top-6 flex items-center gap-2 text-primary font-mono hover:underline"
       >
-        ← Back to XbarzForge
+        <Terminal className="h-5 w-5" />
+        <span>Back to XbarzForge</span>
       </Link>
 
       <SignUp
@@ -144,7 +145,6 @@ function SignUpPage() {
         path={`${basePath}/sign-up`}
         signInUrl={`${basePath}/sign-in`}
       />
-
     </div>
   );
 }
